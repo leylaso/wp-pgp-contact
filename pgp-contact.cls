@@ -89,7 +89,7 @@ class PGP_Contact
 	{
 		if (!current_user_can('read'))
 			wp_die(__('You do not have sufficient permissions to access this page.'));
-		
+	// TODO use $post global instead of php variable	
 		if (!empty($_POST) && $this->verify('upload-public-key', $_POST, TRUE))
 			$msg = $this->save_key($_POST['public-key']);
 

@@ -26,6 +26,7 @@ add_action('admin_init', 'wpcf7_add_tag_generator_encrypt', 55);
  */
 function wpcf7_add_shortcode_encrypt() {
 	wpcf7_add_shortcode( 'encrypt', 'wpcf7_encrypt_shortcode_handler' );
+	wp_enqueue_script('encrypt', plugins_url('pgp-contact/js/encrypt.js'), array('jquery', 'openpgp'));
 }
 add_action( 'wpcf7_init', 'wpcf7_add_shortcode_encrypt' );
 
@@ -36,17 +37,19 @@ add_action( 'wpcf7_init', 'wpcf7_add_shortcode_encrypt' );
  */
 function wpcf7_encrypt_shortcode_handler( $tag ) {
 	$tag = new WPCF7_Shortcode( $tag );
+	$key = get_user_meta(get_the_author_meta('ID'), 'pgp-public-key', TRUE);
 
 	$class = wpcf7_form_controls_class( $tag->type );
 
 	$atts = array();
 
+	$atts['data-public-key'] = $key;
 	$atts['class'] = $tag->get_class_option( $class );
-	$atts['id'] = $tag->get_id_option();
+	$atts['id'] = 'pgp-contact-encrypt';
 	$atts['tabindex'] = $tag->get_option( 'tabindex', 'int', true );
-
 	$atts['type'] = 'submit';
 	$atts['style'] = 'display:none';
+	$atts['disabled'] = 'disabled';
 	$atts['value'] = isset($tag->values[0]) ? $tag->values[0] : __('Encrypt and send', 'pgp-contact');
 
 	$atts = wpcf7_format_atts( $atts );
@@ -67,19 +70,13 @@ function wpcf7_tg_pane_encrypt( $contact_form ) {
 <form action="">
 <table>
 <tr>
-<td><code>id</code> (<?php echo esc_html( __( 'optional', 'contact-form-7' ) ); ?>)<br />
-<input type="text" name="id" class="idvalue oneline option" /></td>
+<td><?php echo esc_html( __( 'Label', 'contact-form-7' ) ); ?> (<?php echo esc_html( __( 'optional', 'contact-form-7' ) ); ?>)<br />
+<input type="text" name="values" class="oneline" /></td>
 
 <td><code>class</code> (<?php echo esc_html( __( 'optional', 'contact-form-7' ) ); ?>)<br />
 <input type="text" name="class" class="classvalue oneline option" /></td>
 </tr>
 
-<tr>
-<td><?php echo esc_html( __( 'Label', 'contact-form-7' ) ); ?> (<?php echo esc_html( __( 'optional', 'contact-form-7' ) ); ?>)<br />
-<input type="text" name="values" class="oneline" /></td>
-
-<td></td>
-</tr>
 </table>
 
 <div class="tg-tag"><?php echo esc_html( __( "Copy this code and paste it into the form left.", 'contact-form-7' ) ); ?><br /><input type="text" name="encrypt" class="tag wp-ui-text-highlight code" readonly="readonly" onfocus="this.select()" /></div>
