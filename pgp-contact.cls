@@ -79,6 +79,7 @@ class PGP_Contact
 		add_users_page('PGP Public Key', 'Your PGP Key', 'read', 'pgpkey', array(&$this, 'public_key_form'));
 	}
 
+
 	/**
 	 * Public key upload form
 	 *
@@ -92,7 +93,7 @@ class PGP_Contact
 		if (!empty($_POST) && $this->verify('upload-public-key', $_POST, TRUE))
 			$msg = $this->save_key($_POST['public-key']);
 
-		include($this->dir . '/inc/public-key-form.inc');
+		include($this->dir . 'inc/public-key-form.inc');
 	}
 
 	/**
@@ -128,7 +129,8 @@ class PGP_Contact
 	 *
 	 * @since 1.0
 	 */
-	function include_openpgp() {
+	public function include_openpgp() 
+	{
     	wp_register_script('openpgp', plugins_url('pgp-contact/js/openpgp.min.js'), FALSE, '0.8.2');
     }
 
@@ -137,11 +139,16 @@ class PGP_Contact
      *
      * @since 1.0
      */
-    function admin_js() {
+    public function admin_js() 
+    {
     	$this->include_openpgp();
     	if (home_url(add_query_arg(array())) == menu_page_url('pgpkey', FALSE))
     		wp_enqueue_script('verify-key', plugins_url('pgp-contact/js/verify-key.js'), array('jquery', 'openpgp'));
 	}
+
 }
+
+// Include contact form 7 integration
+require_once (plugin_dir_path(__FILE__) . 'inc/wpcf7-button.inc');
 
 ?>
