@@ -67,7 +67,8 @@ function wpcf7_encrypt_shortcode_handler( $tag )
  */
 function pgp_contact_wpcf7_include_js($wpcf)
 {
-	$form = $wpcf->get_properties()['form'];
+	$form = $wpcf->get_properties();
+	$form = $form['form']
 	if (stripos($form, '[encrypt'))
 		PGP_Contact::get_instance()->public_js();
 }
