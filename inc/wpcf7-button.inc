@@ -24,9 +24,9 @@ add_action('admin_init', 'wpcf7_add_tag_generator_encrypt', 55);
  *
  * @since 1.0
  */
-function wpcf7_add_shortcode_encrypt() {
+function wpcf7_add_shortcode_encrypt() 
+{
 	wpcf7_add_shortcode( 'encrypt', 'wpcf7_encrypt_shortcode_handler' );
-	wp_enqueue_script('encrypt', plugins_url('pgp-contact/js/encrypt.js'), array('jquery', 'openpgp'));
 }
 add_action( 'wpcf7_init', 'wpcf7_add_shortcode_encrypt' );
 
@@ -35,7 +35,8 @@ add_action( 'wpcf7_init', 'wpcf7_add_shortcode_encrypt' );
  *
  * @since 1.0
  */
-function wpcf7_encrypt_shortcode_handler( $tag ) {
+function wpcf7_encrypt_shortcode_handler( $tag ) 
+{
 	$tag = new WPCF7_Shortcode( $tag );
 	$key = get_user_meta(get_the_author_meta('ID'), 'pgp-public-key', TRUE);
 
@@ -60,11 +61,25 @@ function wpcf7_encrypt_shortcode_handler( $tag ) {
 }
 
 /**
+ * Include javascript when the shortcode is present
+ *
+ * @since 1.0
+ */
+function pgp_contact_wpcf7_include_js($wpcf)
+{
+	$form = $wpcf->get_properties()['form'];
+	if (stripos($form, '[encrypt'))
+		PGP_Contact::get_instance()->public_js();
+}
+add_action('wpcf7_contact_form', 'pgp_contact_wpcf7_include_js');
+
+/**
  * Admin form pane
  *
  * @since 1.0
  */
-function wpcf7_tg_pane_encrypt( $contact_form ) {
+function wpcf7_tg_pane_encrypt( $contact_form ) 
+{
 ?>
 <div id="wpcf7-tg-pane-encrypt" class="hidden">
 <form action="">

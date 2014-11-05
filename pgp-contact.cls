@@ -51,7 +51,6 @@ class PGP_Contact
 		$this->dir = plugin_dir_path(__FILE__);
 
 		add_action('admin_menu', array(&$this, 'admin_menu'));
-		// add_action('wp_enqueue_scripts', array(&$this, 'public_js')); TODO
 		add_action('admin_enqueue_scripts', array(&$this, 'admin_js'));
 	}
 
@@ -131,7 +130,8 @@ class PGP_Contact
 	 */
 	public function include_openpgp() 
 	{
-    	wp_register_script('openpgp', plugins_url('pgp-contact/js/openpgp.min.js'), FALSE, '0.8.2');
+    	//wp_register_script('openpgp.worker', plugins_url('pgp-contact/js/openpgp.worker.min.js'), FALSE, '0.8.2');
+    	wp_register_script('openpgp', plugins_url('pgp-contact/js/openpgp.min.js'), FALSE, '0.7.2');
     }
 
     /**
@@ -145,6 +145,18 @@ class PGP_Contact
     	if (home_url(add_query_arg(array())) == menu_page_url('pgpkey', FALSE))
     		wp_enqueue_script('verify-key', plugins_url('pgp-contact/js/verify-key.js'), array('jquery', 'openpgp'));
 	}
+
+    /**
+     * Include js for the encrypt form
+     *
+     * @since 1.0
+     */
+    public function public_js() 
+    {
+    	$this->include_openpgp();
+		wp_enqueue_script('encrypt', plugins_url('pgp-contact/js/encrypt.js'), array('jquery', 'openpgp'));
+	}
+
 
 }
 
