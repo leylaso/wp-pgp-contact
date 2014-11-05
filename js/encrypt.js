@@ -34,9 +34,11 @@
 			var cryptedText = openpgp.encryptMessage(pgpKey.keys, plain);
 
 			// Replace the text in the textarea with the encrypted text
-			cryptForm.find('textarea').removeAttr('disabled').val(cryptedText);
+			cryptForm.find('textarea').removeAttr('disabled').val(cryptedText).attr('disabled', 'disabled');
 
 			// Submit the form
+			cryptForm.find('input').removeAttr('disabled');
+			cryptForm.find('textarea').removeAttr('disabled');
 			cryptForm.submit();
 
 		});
