@@ -1,6 +1,10 @@
 /**
  * @file
  * Sets up the dynamic verification on key upload pages.
+ *
+ * @package PGP Contact
+ * @version 1.1
+ * @since   1.0
  */
 (function ($) {
 
