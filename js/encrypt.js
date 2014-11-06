@@ -1,6 +1,10 @@
 /**
  * @file
  * Client side encryption of user contact forms
+ *
+ * @package	PGP Contact
+ * @version	1.0
+ * @since	1.0
  */
 (function ($) {
 	$(document).ready( function() {

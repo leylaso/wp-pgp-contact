@@ -1,3 +1,12 @@
+<?php
+/**
+ * Key Upload Form
+ *
+ * @package PGP Contact
+ * @version 1.0
+ * @since   1.0
+ */
+?>
 <div id="public-key-upload-form" class="wrap">
 <?php if (isset($debug)): ?>
 	<pre>
