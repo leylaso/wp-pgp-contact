@@ -8,7 +8,7 @@ Stable tag: "trunk"
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-This plugin uses the openpgp.js libraries to provide users with the ability to upload PGP public keys and later use them for encryption of contact forms.
+Upload a PGP public keys and use it to provide end-to-end encryption of contact forms.
 
 == Description ==
 
