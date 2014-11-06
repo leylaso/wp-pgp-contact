@@ -12,14 +12,15 @@
  *
  * @wordpress-plugin
  * Plugin Name: 	PGP Contact Forms
- * Plugin URI: 		https://github.com/sfyn/wp-pgp-contact
+ * Plugin URI: 		https://wordpress.org/plugins/pgp-contact/
  * Description: 	Allows users to upload PGP public keys and receive encrypted email via contact forms.
  * Version: 		1.0
  * Author: 			Sofian Benaissa
  * Author URI: 		http://www.sfyn.net/
  * License: 		GPL-3.0+
- * License URI:		http://www.gnu.org/licenses/
+ * License URI:		http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: 	pgp-contact
+ * GitHub Plugin URI: https://github.com/sfyn/wp-pgp-contact
  * 
  */
 /*
