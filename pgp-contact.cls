@@ -4,7 +4,7 @@
  * This plugin provides the key upload form and contact forms for users.
  *
  * @package	PGP Contact
- * @version	1.0
+ * @version	1.1
  * @since	1.0
  */
 class PGP_Contact

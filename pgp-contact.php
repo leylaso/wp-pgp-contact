@@ -9,6 +9,8 @@
  * @package		PGP Contact
  * @license		GPL-3.0+
  * @copyright 	2014 Sofian Benaissa
+ * @version		1.1
+ * @since		1.0
  *
  * @wordpress-plugin
  * Plugin Name: 	PGP Contact Forms

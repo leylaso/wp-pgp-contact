@@ -4,38 +4,38 @@
  * Provide integration with Contact Forms 7
  *
  * @package	PGP Contact
- * @version	1.0
+ * @version	1.1
  * @since	1.0
  */
 
 /**
  * Tag generator
  *
- * @since 1.0
+ * @since 1.1
  */
-function wpcf7_add_tag_generator_encrypt()
+function pgp_contact_wpcf7_add_tag()
 {
-	wpcf7_add_tag_generator( 'encrypt', __( 'Encrypt button', 'contact-form-7' ), 'wpcf7-tg-pane-encrypt', 'wpcf7_tg_pane_encrypt', array('nameless'=>1));
+	wpcf7_add_tag_generator( 'encrypt', __( 'Encrypt button', 'contact-form-7' ), 'pgp-contact-wpcf7-tag-pane', 'pgp_contact_wpcf7_tag_pane', array('nameless'=>1));
 }
-add_action('admin_init', 'wpcf7_add_tag_generator_encrypt', 55);
+add_action('admin_init', 'pgp_contact_wpcf7_add_tag', 55);
 
 /**
  * Add wpcf7 shortcode
  *
- * @since 1.0
+ * @since 1.1
  */
-function wpcf7_add_shortcode_encrypt() 
+function pgp_contact_wpcf7_add_shortcode() 
 {
-	wpcf7_add_shortcode( 'encrypt', 'wpcf7_encrypt_shortcode_handler' );
+	wpcf7_add_shortcode( 'encrypt', 'pgp_contact_wpcf7_shortcode_handler' );
 }
-add_action( 'wpcf7_init', 'wpcf7_add_shortcode_encrypt' );
+add_action( 'wpcf7_init', 'pgp_contact_wpcf7_add_shortcode' );
 
 /**
  * Shortcode handler
  *
- * @since 1.0
+ * @since 1.1
  */
-function wpcf7_encrypt_shortcode_handler( $tag ) 
+function pgp_contact_wpcf7_shortcode_handler( $tag ) 
 {
 	$tag = new WPCF7_Shortcode( $tag );
 	$key = get_user_meta(get_the_author_meta('ID'), 'pgp-public-key', TRUE);
@@ -63,12 +63,12 @@ function wpcf7_encrypt_shortcode_handler( $tag )
 /**
  * Include javascript when the shortcode is present
  *
- * @since 1.0
+ * @since 1.1
  */
 function pgp_contact_wpcf7_include_js($wpcf)
 {
 	$form = $wpcf->get_properties();
-	$form = $form['form']
+	$form = $form['form'];
 	if (stripos($form, '[encrypt'))
 		PGP_Contact::get_instance()->public_js();
 }
@@ -77,12 +77,12 @@ add_action('wpcf7_contact_form', 'pgp_contact_wpcf7_include_js');
 /**
  * Admin form pane
  *
- * @since 1.0
+ * @since 1.1
  */
-function wpcf7_tg_pane_encrypt( $contact_form ) 
+function pgp_contact_wpcf7_tag_pane( $contact_form ) 
 {
 ?>
-<div id="wpcf7-tg-pane-encrypt" class="hidden">
+<div id="pgp-contact-wpcf7-tag-pane" class="hidden">
 <form action="">
 <table>
 <tr>
