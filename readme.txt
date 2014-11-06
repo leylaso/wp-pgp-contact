@@ -13,7 +13,7 @@ This plugin uses the openpgp.js libraries to provide users with the ability to u
 
 The goal of this project is to encrypt form submissions before they are submitted. This avoids sending plaintext messages over the network, thus providing end-to-end encrypted communication, which is not the case with solutions that encrypt messages after submission, server-side, using tools such as gnupg.
 
-This module attempts to make this process as secure as possible, but for better security, I recommend using SSL on deployments.
+This plugin attempts to make this process as secure as possible, but for better security, I recommend using SSL on deployments.
 
 == Installation ==
 
