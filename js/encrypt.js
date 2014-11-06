@@ -3,7 +3,7 @@
  * Client side encryption of user contact forms
  *
  * @package	PGP Contact
- * @version	1.0
+ * @version	1.1
  * @since	1.0
  */
 (function ($) {

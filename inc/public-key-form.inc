@@ -3,7 +3,7 @@
  * Key Upload Form
  *
  * @package PGP Contact
- * @version 1.0
+ * @version 1.1
  * @since   1.0
  */
 ?>

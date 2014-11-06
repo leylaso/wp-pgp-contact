@@ -4,14 +4,14 @@
  * Provide integration with Contact Forms 7
  *
  * @package	PGP Contact
- * @version	1.0
+ * @version	1.1
  * @since	1.0
  */
 
 /**
  * Tag generator
  *
- * @since 1.0
+ * @since 1.1
  */
 function pgp_contact_wpcf7_add_tag()
 {
@@ -22,7 +22,7 @@ add_action('admin_init', 'pgp_contact_wpcf7_add_tag', 55);
 /**
  * Add wpcf7 shortcode
  *
- * @since 1.0
+ * @since 1.1
  */
 function pgp_contact_wpcf7_add_shortcode() 
 {
@@ -33,7 +33,7 @@ add_action( 'wpcf7_init', 'pgp_contact_wpcf7_add_shortcode' );
 /**
  * Shortcode handler
  *
- * @since 1.0
+ * @since 1.1
  */
 function pgp_contact_wpcf7_shortcode_handler( $tag ) 
 {
@@ -63,7 +63,7 @@ function pgp_contact_wpcf7_shortcode_handler( $tag )
 /**
  * Include javascript when the shortcode is present
  *
- * @since 1.0
+ * @since 1.1
  */
 function pgp_contact_wpcf7_include_js($wpcf)
 {
@@ -77,7 +77,7 @@ add_action('wpcf7_contact_form', 'pgp_contact_wpcf7_include_js');
 /**
  * Admin form pane
  *
- * @since 1.0
+ * @since 1.1
  */
 function pgp_contact_wpcf7_tag_pane( $contact_form ) 
 {
