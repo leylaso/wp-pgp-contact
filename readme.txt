@@ -1,5 +1,6 @@
 === PGP Contact ===
 Contributors: sfyn
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=HKTUUSYZF9FMG&lc=CA&item_name=PGP%20Contact%20Plugin&currency_code=CAD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
 Tags: pgp, openpgp.js, secure contact, encryption, javascript
 Requires at least: 4.0
 Tested up to: 4.0
