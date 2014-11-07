@@ -32,3 +32,14 @@ Via the "Your PGP Key" menu item in the Users admin section.
 = How do use this module with Contact Forms 7? =
 
 The encryption button is provided in the same list of tags as the submit button and other contact form elements. You just need to add it. Alternatively, you can directly paste the shortcode `[encrypt]` into the form itself.
+
+== Changelog ==
+
+= 1.1 =
+* Namespace changes to the wpcf7 integration code
+* Syntax error introduced during svn initial commits fixed
+
+== Upgrade Notice ==
+
+= 1.1 =
+The 1.0 release is not functional, so you must upgrade!
